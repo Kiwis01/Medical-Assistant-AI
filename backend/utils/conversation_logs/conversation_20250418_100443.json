@@ -1,0 +1,29 @@
+[
+  {
+    "role": "user",
+    "text": "I have a headache, i have been feeling dizzy too"
+  },
+  {
+    "role": "model",
+    "agent": "Neurology",
+    "text": "Okay, I understand you're experiencing headaches and dizziness. These symptoms can stem from various causes, ranging from mild dehydration or tension headaches to more complex issues.\n\nGiven that the tumor prediction from the image is unavailable (\"None\"), and these symptoms *could* potentially be associated with a brain tumor (though many other conditions are more likely), I would strongly recommend uploading an image for classification to help rule out any serious underlying issues.\n\nIn the meantime, consider if you're dehydrated, stressed, or sleep-deprived, as these are common triggers for headaches and dizziness. Over-the-counter pain relievers may help with the headache. If your symptoms persist or worsen, it's important to consult a doctor for a comprehensive evaluation to determine the exact cause and appropriate treatment. The articles provided do not relate to your symptoms."
+  },
+  {
+    "role": "user",
+    "text": "'/Users/kiwis/Documents/capstone/medrag/utils/images/uploads/mri.jpg'"
+  },
+  {
+    "role": "model",
+    "agent": "Neurology",
+    "text": "Okay, I understand you've uploaded an MRI image.\n\nBased on the image analysis, there's a high confidence detection of a glioma. Additionally, you mentioned experiencing headaches and dizziness. While these symptoms can be caused by many things, in the context of a possible glioma, they raise concern.\n\nGliomas are a type of brain tumor, and treatment options vary depending on the type, size, and location of the tumor, as well as your overall health. Treatment approaches can include surgery, radiation therapy, and chemotherapy. The recent research highlights potential therapeutic targets like SURF4 and RALGAPA1 (Wang et al., 2025) and the use of MTAP immunohistochemistry as a marker related to brain tumors (Dono et al., 2025). Also, provider volume can impact neurosurgical procedure selection (Reiner et al., 2025).\n\n**Recommendation:** It is essential to consult with a neuro-oncologist and a multidisciplinary team to discuss these findings and develop a comprehensive treatment plan tailored to your specific situation."
+  },
+  {
+    "role": "user",
+    "text": "my stomach hurts"
+  },
+  {
+    "role": "model",
+    "agent": "General Medicine",
+    "text": "Okay, I understand you're now experiencing stomach pain in addition to your previous symptoms of headache and dizziness, and the high confidence detection of a glioma from your MRI.\n\nWhile seemingly unrelated, it's important to consider all symptoms. Stomach pain can arise from various causes, such as indigestion, stress, or a viral infection. However, given the serious finding from your MRI, it's crucial not to dismiss any new symptom.\n\nRecommendation: Contact your medical team immediately. Inform them about the new stomach pain. It's important to determine if the abdominal pain is a side effect of any medication you are taking, or potentially related to the glioma. They will be able to assess whether this requires immediate investigation."
+  }
+]

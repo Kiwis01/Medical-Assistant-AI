@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "text": "my head hurts, my frontal lobe feels like its throbbing"
+  },
+  {
+    "role": "model",
+    "agent": "Neurology",
+    "text": "The patient is experiencing a throbbing headache localized to the frontal lobe. Without an image analysis, it's difficult to assess the possibility of a tumor.\n\nGiven the persistent headache, I recommend uploading a relevant image (MRI or CT scan) for classification. If that's not possible, consult with your primary care physician or a neurologist for a comprehensive evaluation. They can perform a neurological exam and order appropriate imaging studies to determine the cause of your headache and rule out any serious underlying conditions. Based on Source 2, the headache may be related to glioblastoma."
+  },
+  {
+    "role": "user",
+    "text": "'/Users/kiwis/Documents/capstone/medrag/utils/images/uploads/mri.jpg'"
+  },
+  {
+    "role": "model",
+    "agent": "Neurology",
+    "text": "Based on your symptoms (throbbing headache in the frontal lobe) and the image analysis indicating a possible glioma, it's important to proceed with caution and further investigation.\n\nGliomas can cause headaches due to increased pressure in the skull or irritation of brain tissue (Source 2). The location of your headache is also consistent with the image findings.\n\nI strongly recommend consulting with a neurologist or neuro-oncologist as soon as possible. They can conduct a thorough neurological examination, review the imaging, and determine the best course of action. This may involve further imaging, biopsies, and discussions about potential treatment options like surgery, radiation therapy (possibly guided by magnetic resonance spectroscopy, as suggested in Source 3), and/or chemotherapy."
+  }
+]

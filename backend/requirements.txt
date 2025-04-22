@@ -1,0 +1,6 @@
+flask
+requests
+google-generativeai
+tenacity
+flask-cors
+opencv-python

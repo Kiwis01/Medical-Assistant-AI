@@ -1,279 +1,29 @@
-// App.tsx
-import React, { useRef, useState } from 'react';
-import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserDoctor, faUser, faImage } from '@fortawesome/free-solid-svg-icons';
-import ReactMarkdown from 'react-markdown';
-
-interface Message {
-  text?: string;
-  sender: 'user' | 'bot';
-  imageUrl?: string;
-}
+// src/App.tsx
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import SignIn from './pages/Login/SignIn';
+import SignUp from './pages/Login/SignUp';
+import Dashboard from './pages/Login/Dashboard';
+import Chatbot from './pages/Chatbot';
+import { useAuth } from './services/auth';
 
 function App() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState('');
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  const handleSendMessage = async () => {
-    // Handle image upload and message
-    if (imagePreview && imageFile) {
-      try {
-        // Upload image to backend
-        const serverPath = await uploadImageToBackend(imageFile);
-        // Add user message with preview to UI
-        const userMessage: Message = { sender: 'user', imageUrl: imagePreview, text: serverPath };
-        // Use a local updatedMessages array to keep the preview
-        const updatedMessages = [...messages, userMessage];
-        setMessages(updatedMessages);
-        setImagePreview(null);
-        setImageFile(null);
-        if (fileInputRef.current) fileInputRef.current.value = '';
-
-        // Prepare backend history (only text messages)
-        const backendHistory = updatedMessages
-          .filter((msg) => typeof msg.text === "string" && msg.text)
-          .map((msg) => ({
-            role: msg.sender === "user" ? "user" : "model",
-            text: msg.text as string,
-          }));
-
-        // Send to backend
-        const data = await sendMessageToBackend(serverPath, backendHistory, "12345");
-        // Convert backend history to frontend Message[]
-        setMessages(prevMsgs => {
-          return data.history.map((msg: any) => {
-            if (msg.role === "user") {
-              // Find a local user message with a matching text and imageUrl
-              const local = prevMsgs.find(
-                m => m.sender === "user" && m.text === msg.text && m.imageUrl
-              );
-              if (local) {
-                return { ...msg, sender: "user", imageUrl: local.imageUrl };
-              }
-            }
-            // If bot message and text is an image path, set imageUrl
-            if (
-              msg.role !== "user" &&
-              typeof msg.text === "string" &&
-              (msg.text.startsWith("/uploads/") || msg.text.startsWith("/generated/"))
-            ) {
-              return { ...msg, sender: "bot", imageUrl: msg.text };
-            }
-            return { text: msg.text, sender: msg.role === "user" ? "user" : "bot" };
-          });
-        });
-      } catch (err) {
-        console.error(err);
-      }
-      return;
-    }
-
-    // Send text message
-    if (inputText.trim() !== "") {
-      // Prepare backend history format (only text messages)
-      const backendHistory = messages
-        .filter((msg) => typeof msg.text === "string" && msg.text)
-        .map((msg) => ({
-          role: msg.sender === "user" ? "user" : "model",
-          text: msg.text as string,
-        }));
-
-      try {
-        const data = await sendMessageToBackend(inputText, backendHistory, "12345");
-        // Convert backend history to frontend Message[]
-        setMessages(prevMsgs => {
-          return data.history.map((msg: any) => {
-            if (msg.role === "user") {
-              const local = prevMsgs.find(
-                m => m.sender === "user" && m.text === msg.text && m.imageUrl
-              );
-              if (local) {
-                return { ...msg, sender: "user", imageUrl: local.imageUrl };
-              }
-            }
-            return { text: msg.text, sender: msg.role === "user" ? "user" : "bot" };
-          });
-        });
-      } catch (err) {
-        console.error(err);
-      }
-      setInputText("");
-    }
-  };
-
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-        setImageFile(file);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleCancelImage = () => {
-    setImagePreview(null);
-    setImageFile(null);
-    if (fileInputRef.current) fileInputRef.current.value = '';
-  };
+  const { isAuthenticated } = useAuth();
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`message ${message.sender} fade-in`}
-          >
-            <span className="icon">
-              {message.sender === 'user' ? <FontAwesomeIcon icon={faUser} /> : <FontAwesomeIcon icon={faUserDoctor} />}
-            </span>
-            {(message.imageUrl || (typeof message.text === "string" && (message.text.startsWith("/uploads/") || message.text.startsWith("/generated/")))) ? (
-              <img
-                src={
-                  message.imageUrl
-                    ? (message.imageUrl.startsWith("/uploads/") || message.imageUrl.startsWith("/generated/")
-                        ? `http://localhost:5000${message.imageUrl}`
-                        : message.imageUrl)
-                    : `http://localhost:5000${message.text}`
-                }
-                alt="uploaded"
-                className="message-image"
-                style={{ maxWidth: 180, maxHeight: 180, borderRadius: 12, marginRight: 8, cursor: 'pointer' }}
-                onClick={() => {
-                  const url = message.imageUrl
-                    ? (message.imageUrl.startsWith("/uploads/") || message.imageUrl.startsWith("/generated/")
-                        ? `http://localhost:5000${message.imageUrl}`
-                        : message.imageUrl)
-                    : `http://localhost:5000${message.text}`;
-                  setZoomedImage(url);
-                }}
-              />
-            ) : (
-              message.sender === 'bot' ? (
-                <span className="message-text">
-                  <ReactMarkdown>{message.text || ''}</ReactMarkdown>
-                </span>
-              ) : (
-                <span className="message-text">{message.text}</span>
-              )
-            )}
-          </div>
-        ))}
-      </div>
-      {/* Image Zoom Modal */}
-      {zoomedImage && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            background: 'rgba(0,0,0,0.7)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000
-          }}
-          onClick={() => setZoomedImage(null)}
-        >
-          <img
-            src={zoomedImage}
-            alt="zoomed"
-            style={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              borderRadius: 16,
-              boxShadow: '0 0 16px #000',
-              background: '#fff',
-              padding: 8
-            }}
-            onClick={e => e.stopPropagation()}
-          />
-          <button
-            onClick={() => setZoomedImage(null)}
-            style={{
-              position: 'absolute',
-              top: 32,
-              right: 48,
-              fontSize: 32,
-              background: 'none',
-              border: 'none',
-              color: '#fff',
-              cursor: 'pointer',
-              zIndex: 1001
-            }}
-            aria-label="Close zoomed image"
-          >
-            &times;
-          </button>
-        </div>
-      )}
-      <div className="chat-input">
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-          placeholder="Type a message..."
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route 
+          path="/chatbot" 
+          element={isAuthenticated ? <Chatbot /> : <Navigate to="/signin" />} 
         />
-        <label htmlFor="image-upload" className="image-upload-btn" title="Upload image">
-          <FontAwesomeIcon icon={faImage} size="lg" />
-          <input
-            ref={fileInputRef}
-            id="image-upload"
-            type="file"
-            accept="image/*"
-            style={{ display: 'none' }}
-            onChange={handleImageChange}
-          />
-        </label>
-        {imagePreview && (
-          <div className="image-preview-container">
-            <img src={imagePreview} alt="preview" className="image-preview" style={{ maxWidth: 100, maxHeight: 100, borderRadius: 8, marginRight: 8 }} />
-            <button className="cancel-image-btn" onClick={handleCancelImage} type="button">Cancel</button>
-          </div>
-        )}
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
-    </div>
+        <Route path="/" element={<Navigate to={isAuthenticated ? "/chatbot" : "/signup"} />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
-// Upload image to backend and get server path
-async function uploadImageToBackend(file: File): Promise<string> {
-  const formData = new FormData();
-  formData.append('file', file);
-  const res = await fetch('http://localhost:5000/upload', {
-    method: 'POST',
-    body: formData,
-  });
-  if (!res.ok) throw new Error('Image upload failed');
-  const data = await res.json();
-  return data.image_path; // e.g. '/uploads/filename.jpg'
-}
-
-async function sendMessageToBackend(
-  query: string,
-  history: { role: string; text: string }[],
-  user_id = "12345"
-): Promise<{ response: string; history: any[]; specialty: string }> {
-  const res = await fetch("http://localhost:5000/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query, history, user_id }),
-  });
-  if (!res.ok) throw new Error("Network error");
-  return res.json();
 }
 
 export default App;

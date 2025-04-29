@@ -46,5 +46,7 @@ class Config:
         self.google_cse_id = data.get("google_cse_id", "")
         self.search_engine_key = data.get("search_engine_key", "")
 
+        self.database_uri = data.get("DATABASE_URL", "")
+
         self.logger.info("@config.py initialized successfully")
 

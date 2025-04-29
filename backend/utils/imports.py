@@ -22,3 +22,6 @@ import numpy as np
 
 # Common utils
 from utils.common_utils import *
+
+# Database
+from werkzeug.security import generate_password_hash, check_password_hash

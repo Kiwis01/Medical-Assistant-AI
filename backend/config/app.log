@@ -921,3 +921,200 @@
 2025-04-22 03:13:35,781 - INFO - @general_med_agent.py Handling query
 2025-04-22 03:28:00,193 - INFO - @superior_agent.py Determined specialty: General Medicine
 2025-04-22 03:28:00,193 - INFO - @general_med_agent.py Handling query
+2025-04-22 03:44:58,675 - INFO - @config.py initialized successfully
+2025-04-22 03:45:04,768 - INFO - @config.py initialized successfully
+2025-04-22 03:45:16,784 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 03:45:16,786 - INFO - @general_med_agent.py Handling query
+2025-04-22 03:45:31,805 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 03:45:31,806 - INFO - @neurology_agent.py Handling query
+2025-04-22 03:45:31,808 - INFO - @research_tools.py Searching for: neurology My head hurts brain
+2025-04-22 03:45:31,809 - INFO - @research_tools.py Searching PubMed for: neurology My head hurts brain
+2025-04-22 03:45:31,809 - INFO - Simplified PubMed search term: head brain
+2025-04-22 03:45:33,989 - INFO - @neurology_agent.py Generated response
+2025-04-22 03:45:45,090 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 03:45:45,108 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 03:45:52,422 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 03:45:52,422 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 03:46:15,270 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 03:46:15,270 - INFO - @neurology_agent.py Handling query
+2025-04-22 03:46:15,271 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 03:46:18,147 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '3a5170b8-00c9-4410-ad05-a1056b6e314b'}]
+2025-04-22 03:46:18,147 - INFO - @neurology_agent.py Got prediction
+2025-04-22 03:46:18,147 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 03:46:18,423 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 03:46:18,423 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 03:46:18,423 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 03:46:18,423 - INFO - @research_tools.py Searching for: neurology brain mri, send this to neurology agent meningioma brain
+2025-04-22 03:46:18,424 - INFO - @research_tools.py Searching PubMed for: neurology brain mri, send this to neurology agent meningioma brain
+2025-04-22 03:46:18,424 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 03:46:20,720 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:03:25,156 - INFO - @config.py initialized successfully
+2025-04-22 14:03:25,850 - INFO - @config.py initialized successfully
+2025-04-22 14:05:16,252 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:05:16,253 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:05:26,968 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:05:26,968 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:05:26,969 - INFO - @research_tools.py Searching for: neurology I have a severe headache brain
+2025-04-22 14:05:26,969 - INFO - @research_tools.py Searching PubMed for: neurology I have a severe headache brain
+2025-04-22 14:05:26,969 - INFO - Simplified PubMed search term: headache brain
+2025-04-22 14:05:28,862 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:05:39,451 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:05:39,452 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:05:43,798 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:05:43,799 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:05:49,576 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:05:49,576 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:06:05,321 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:06:05,322 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:06:05,322 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 14:06:08,318 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '898902d0-a0b0-4222-ae0c-4e1fc60f08f5'}]
+2025-04-22 14:06:08,318 - INFO - @neurology_agent.py Got prediction
+2025-04-22 14:06:08,320 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 14:06:08,384 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:06:08,385 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:06:08,385 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:06:08,385 - INFO - @research_tools.py Searching for: neurology this is a brain scan, send it to neurology agent meningioma brain
+2025-04-22 14:06:08,385 - INFO - @research_tools.py Searching PubMed for: neurology this is a brain scan, send it to neurology agent meningioma brain
+2025-04-22 14:06:08,385 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 14:06:10,878 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:06:52,150 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:06:52,151 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:27:05,226 - INFO - @config.py initialized successfully
+2025-04-22 14:27:06,460 - INFO - @config.py initialized successfully
+2025-04-22 14:27:10,252 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:27:10,252 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:27:57,409 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:27:57,410 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:27:57,411 - INFO - @research_tools.py Searching for: neurology I am feeling dizzy, and I have a strong headache brain
+2025-04-22 14:27:57,411 - INFO - @research_tools.py Searching PubMed for: neurology I am feeling dizzy, and I have a strong headache brain
+2025-04-22 14:27:57,411 - INFO - Simplified PubMed search term: headache brain
+2025-04-22 14:27:59,665 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:28:41,886 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:28:41,894 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:29:12,019 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:29:12,019 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:29:12,020 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 14:29:14,564 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '8550dd88-04ff-4ba8-984b-18fefed7e15e'}]
+2025-04-22 14:29:14,565 - INFO - @neurology_agent.py Got prediction
+2025-04-22 14:29:14,565 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 14:29:14,635 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:29:14,636 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:29:14,636 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:29:14,636 - INFO - @research_tools.py Searching for: neurology this is a brain mri scan, I think we need to send this to a neurologist meningioma brain
+2025-04-22 14:29:14,636 - INFO - @research_tools.py Searching PubMed for: neurology this is a brain mri scan, I think we need to send this to a neurologist meningioma brain
+2025-04-22 14:29:14,636 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 14:29:16,532 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:33:25,259 - INFO - @config.py initialized successfully
+2025-04-22 14:33:26,270 - INFO - @config.py initialized successfully
+2025-04-22 14:37:10,593 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:37:10,595 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:37:37,357 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:37:37,358 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:37:37,358 - INFO - @research_tools.py Searching for: neurology I am feeling dizzy and have a strong headache brain
+2025-04-22 14:37:37,358 - INFO - @research_tools.py Searching PubMed for: neurology I am feeling dizzy and have a strong headache brain
+2025-04-22 14:37:37,358 - INFO - Simplified PubMed search term: dizzy headache brain
+2025-04-22 14:37:39,455 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:38:23,788 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:38:23,788 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:38:46,374 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:38:46,375 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:38:46,375 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 14:38:48,686 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '3aebfc9b-834d-4bb0-842a-ef090cc9d179'}]
+2025-04-22 14:38:48,691 - INFO - @neurology_agent.py Got prediction
+2025-04-22 14:38:48,691 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 14:38:48,746 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:38:48,747 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:38:48,747 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:38:48,747 - INFO - @research_tools.py Searching for: neurology brain mri scan, send this to a neurologist meningioma brain
+2025-04-22 14:38:48,747 - INFO - @research_tools.py Searching PubMed for: neurology brain mri scan, send this to a neurologist meningioma brain
+2025-04-22 14:38:48,747 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 14:38:50,683 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:40:44,696 - INFO - @config.py initialized successfully
+2025-04-22 14:40:45,870 - INFO - @config.py initialized successfully
+2025-04-22 14:40:50,105 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:40:50,105 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:45:41,549 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:45:41,550 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:45:41,552 - INFO - @research_tools.py Searching for: neurology I feel dizzy and i have a severe headache brain
+2025-04-22 14:45:41,555 - INFO - @research_tools.py Searching PubMed for: neurology I feel dizzy and i have a severe headache brain
+2025-04-22 14:45:41,557 - INFO - Simplified PubMed search term: dizzy headache brain
+2025-04-22 14:45:43,775 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:46:11,842 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:46:11,844 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:46:28,840 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:46:28,840 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:46:28,840 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 14:46:31,509 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': 'd469ec18-8bcf-4f43-80de-3097ff5ecac1'}]
+2025-04-22 14:46:31,520 - INFO - @neurology_agent.py Got prediction
+2025-04-22 14:46:31,522 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 14:46:31,768 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:46:31,768 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:46:31,768 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:46:31,769 - INFO - @research_tools.py Searching for: neurology brain mri, send this to a neurologist meningioma brain
+2025-04-22 14:46:31,769 - INFO - @research_tools.py Searching PubMed for: neurology brain mri, send this to a neurologist meningioma brain
+2025-04-22 14:46:31,769 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 14:46:33,695 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:49:17,950 - INFO - @config.py initialized successfully
+2025-04-22 14:49:19,446 - INFO - @config.py initialized successfully
+2025-04-22 14:49:23,624 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-22 14:49:23,624 - INFO - @general_med_agent.py Handling query
+2025-04-22 14:49:28,099 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:49:28,099 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:49:28,099 - INFO - @research_tools.py Searching for: neurology I feel dizzy and i have a severe headache brain
+2025-04-22 14:49:28,099 - INFO - @research_tools.py Searching PubMed for: neurology I feel dizzy and i have a severe headache brain
+2025-04-22 14:49:28,099 - INFO - Simplified PubMed search term: dizzy headache brain
+2025-04-22 14:49:30,768 - INFO - @neurology_agent.py Generated response
+2025-04-22 14:52:38,294 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-22 14:52:38,298 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-22 14:52:45,549 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-22 14:52:45,549 - INFO - @neurology_agent.py Handling query
+2025-04-22 14:52:45,549 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-22 14:52:47,979 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '990d4e50-ce00-4768-87de-faed2197c484'}]
+2025-04-22 14:52:47,979 - INFO - @neurology_agent.py Got prediction
+2025-04-22 14:52:47,979 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-22 14:52:48,040 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:52:48,040 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:52:48,040 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-22 14:52:48,040 - INFO - @research_tools.py Searching for: neurology This is a brain mri scan, send this to a neurologist meningioma brain
+2025-04-22 14:52:48,040 - INFO - @research_tools.py Searching PubMed for: neurology This is a brain mri scan, send this to a neurologist meningioma brain
+2025-04-22 14:52:48,040 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-22 14:52:50,452 - INFO - @neurology_agent.py Generated response
+2025-04-28 18:36:02,933 - INFO - @config.py initialized successfully
+2025-04-28 18:36:23,135 - INFO - @config.py initialized successfully
+2025-04-28 18:37:19,141 - INFO - @config.py initialized successfully
+2025-04-28 18:37:41,358 - INFO - @config.py initialized successfully
+2025-04-28 18:37:44,485 - INFO - @config.py initialized successfully
+2025-04-28 18:46:08,186 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 18:46:08,189 - INFO - @general_med_agent.py Handling query
+2025-04-28 18:46:16,784 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 18:46:16,784 - INFO - @general_med_agent.py Handling query
+2025-04-28 18:46:22,714 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 18:46:22,714 - INFO - @general_med_agent.py Handling query
+2025-04-28 18:46:42,779 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-28 18:46:42,780 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-28 18:46:47,482 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-28 18:46:47,482 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-28 18:46:52,454 - WARNING - @superior_agent.py Could not determine a specialty
+2025-04-28 18:46:52,454 - WARNING - @app.py No specialist agent found, Is this a brain scan or skin image?
+2025-04-28 18:47:02,820 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-04-28 18:47:02,821 - INFO - @neurology_agent.py Handling query
+2025-04-28 18:47:02,821 - INFO - @neurology_agent.py Found image in conversation: /uploads/meng.jpg
+2025-04-28 18:47:06,849 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '8eb83cbc-5225-4edc-a72d-f1a1124e7f60'}]
+2025-04-28 18:47:06,849 - INFO - @neurology_agent.py Got prediction
+2025-04-28 18:47:06,849 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg
+2025-04-28 18:47:07,002 - INFO - @neurology_agent_tools.py Generated annotated image: annotated_meng.jpg at /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-28 18:47:07,002 - INFO - @neurology_agent.py Generated image with bounding boxes: /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-28 18:47:07,002 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Documents/Projects/medai/backend/uploads/meng.jpg -> /home/kiwis/Documents/Projects/medai/backend/utils/images/generated/annotated_meng.jpg
+2025-04-28 18:47:07,002 - INFO - @research_tools.py Searching for: neurology brain mri, send this to neurologist meningioma brain
+2025-04-28 18:47:07,002 - INFO - @research_tools.py Searching PubMed for: neurology brain mri, send this to neurologist meningioma brain
+2025-04-28 18:47:07,002 - INFO - Simplified PubMed search term: brain meningioma
+2025-04-28 18:47:09,730 - INFO - @neurology_agent.py Generated response
+2025-04-28 18:50:13,896 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 18:50:13,898 - INFO - @general_med_agent.py Handling query
+2025-04-28 18:50:33,502 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 18:50:33,502 - INFO - @general_med_agent.py Handling query
+2025-04-28 19:03:50,597 - INFO - @config.py initialized successfully
+2025-04-28 19:04:02,395 - INFO - @config.py initialized successfully
+2025-04-28 19:04:04,568 - INFO - @config.py initialized successfully
+2025-04-28 19:04:25,709 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-04-28 19:04:25,709 - INFO - @general_med_agent.py Handling query

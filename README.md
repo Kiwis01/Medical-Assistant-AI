@@ -1,4 +1,4 @@
-# MedAssistAI
+# ⚕️ MedAssistAI 
 
 MedAssistAI is an advanced medical assistant chatbot capable of handling symptom-related issues using a multi-agent AI architecture. The system leverages Google's Gemini LLM to provide specialized medical insights across different domains including cardiology, neurology, and general medicine.
 

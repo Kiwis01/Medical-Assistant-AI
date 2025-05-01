@@ -1653,3 +1653,27 @@
 2025-05-01 03:42:39,097 - INFO - @research_tools.py Searching PubMed for: neurology it is the same brain mri meningioma brain
 2025-05-01 03:42:39,097 - INFO - Simplified PubMed search term: brain meningioma
 2025-05-01 03:42:41,153 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:22:20,500 - INFO - @config.py initialized successfully
+2025-05-01 04:28:32,295 - INFO - @config.py initialized successfully
+2025-05-01 04:28:34,956 - INFO - @config.py initialized successfully
+2025-05-01 04:28:52,874 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:28:52,875 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:29:03,676 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:29:03,677 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:29:08,129 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-05-01 04:29:08,129 - INFO - @neurology_agent.py Handling query
+2025-05-01 04:29:08,130 - INFO - @neurology_agent.py Found image 'Tr-gl_1244.jpg' in conversation
+2025-05-01 04:29:08,130 - INFO - @neurology_agent.py Image file exists: /Users/kiwis/Documents/MedAIFinal/Medical-Assistant-AI/backend/utils/images/uploads/Tr-gl_1244.jpg
+2025-05-01 04:29:11,107 - INFO - @neurology_agent.py [{'x': 243.0, 'y': 153.0, 'width': 32.0, 'height': 44.0, 'confidence': 0.8938828706741333, 'class': 'glioma', 'class_id': 1, 'detection_id': 'ca1d98ba-9ea0-4f4b-bb97-243fc6135984'}]
+2025-05-01 04:29:11,108 - INFO - @neurology_agent.py Got prediction
+2025-05-01 04:29:11,108 - INFO - @common_utils.py Added image to tracking: /Users/kiwis/Documents/MedAIFinal/Medical-Assistant-AI/backend/utils/images/uploads/Tr-gl_1244.jpg
+2025-05-01 04:29:11,129 - INFO - @neurology_agent_tools.py Generated image: annotated_Tr-gl_1244.jpg
+2025-05-01 04:29:11,129 - INFO - @common_utils.py Added generated image tracking: /Users/kiwis/Documents/MedAIFinal/Medical-Assistant-AI/backend/utils/images/uploads/Tr-gl_1244.jpg -> annotated_Tr-gl_1244.jpg
+2025-05-01 04:29:11,130 - INFO - @research_tools.py Searching for: neurology brain tumor glioma brain
+2025-05-01 04:29:11,130 - INFO - @research_tools.py Searching PubMed for: neurology brain tumor glioma brain
+2025-05-01 04:29:11,130 - INFO - Simplified PubMed search term: brain tumor glioma
+2025-05-01 04:29:13,768 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:29:49,502 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:29:49,503 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:30:04,042 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:30:04,042 - INFO - @general_med_agent.py Handling query

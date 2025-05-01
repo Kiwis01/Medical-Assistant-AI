@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
+import { API_BASE_URL } from "../../constants";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const SignUp: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/signup", {
+      const response = await fetch(`${API_BASE_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

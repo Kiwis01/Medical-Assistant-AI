@@ -1,5 +1,6 @@
 // src/services/auth.tsx
 import React, { useState, createContext, useContext, ReactNode } from 'react';
+import { API_BASE_URL } from '../constants';
 
 interface User {
   username: string;
@@ -24,7 +25,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (credentials: { username: string; password: string }) => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/signin', {
+      const response = await fetch(`${API_BASE_URL}/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials)

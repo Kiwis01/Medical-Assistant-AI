@@ -5,6 +5,7 @@ import './ChatbotStyles.css'; // Import the override styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserDoctor, faUser, faImage } from '@fortawesome/free-solid-svg-icons';
 import ReactMarkdown from 'react-markdown';
+import { API_BASE_URL } from '../../constants';
 
 interface Message {
   text?: string;
@@ -142,9 +143,9 @@ function App() {
                 src={
                   message.imageUrl
                     ? (message.imageUrl.startsWith("/uploads/") || message.imageUrl.startsWith("/generated/")
-                        ? `http://localhost:5000${message.imageUrl}`
+                        ? `${API_BASE_URL}${message.imageUrl}`
                         : message.imageUrl)
-                    : `http://localhost:5000${message.text}`
+                    : `${API_BASE_URL}${message.text}`
                 }
                 alt="uploaded"
                 className="message-image"
@@ -152,9 +153,9 @@ function App() {
                 onClick={() => {
                   const url = message.imageUrl
                     ? (message.imageUrl.startsWith("/uploads/") || message.imageUrl.startsWith("/generated/")
-                        ? `http://localhost:5000${message.imageUrl}`
+                        ? `${API_BASE_URL}${message.imageUrl}`
                         : message.imageUrl)
-                    : `http://localhost:5000${message.text}`;
+                    : `${API_BASE_URL}${message.text}`;
                   setZoomedImage(url);
                 }}
               />
@@ -254,7 +255,7 @@ function App() {
 async function uploadImageToBackend(file: File): Promise<string> {
   const formData = new FormData();
   formData.append('file', file);
-  const res = await fetch('http://localhost:5000/upload', {
+  const res = await fetch(`${API_BASE_URL}/upload`, {
     method: 'POST',
     body: formData,
   });
@@ -268,7 +269,7 @@ async function sendMessageToBackend(
   history: { role: string; text: string }[],
   user_id = "12345"
 ): Promise<{ response: string; history: any[]; specialty: string }> {
-  const res = await fetch("http://localhost:5000/chat", {
+  const res = await fetch(`${API_BASE_URL}/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, history, user_id }),

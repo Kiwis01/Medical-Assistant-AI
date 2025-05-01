@@ -82,8 +82,10 @@ For more detailed information:
 - [Backend Documentation](./backend/README.md)
 - [Frontend Documentation](./frontend/README.md)
 
-## License
-[Specify your license here]
+<!-- ## License
+[Specify your license here] -->
 
 ## Contributors
-[Your name/team information]
+Carlos Quihuis - chquihui@asu.edu
+Jacob Swarzmiller - jswartzm@asu.edu
+Vincent Nguyen - vnguye58@asu.edu

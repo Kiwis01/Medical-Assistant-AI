@@ -50,7 +50,7 @@ npm install
 ```
 
 ### Configuration
-1. Create `backend/config/config.json` with your API keys and database settings
+1. Create `backend/config/config.json` with your API keys and database settings (see `backend/config/sample_config.json` for an example)
 2. Ensure the PostgreSQL database is created and accessible
 
 ## Usage

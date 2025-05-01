@@ -1,20 +1,17 @@
-from utils.imports import *
-from agent_tools.research_tools import ResearchTools
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GENERATED_FOLDER = os.path.join(BASE_DIR, "utils", "images", "generated")
+import requests
+import cv2
+from flask import current_app
+from agent_tools.research_tools import ResearchTools
 
 class NeurologyAgentTools:
     def __init__(self, config):
         self.logger = config.logger
         self.research = ResearchTools(config)
 
-    async def get_neurology_info(self, query: str=None):
-        #return google search with .edu, .org, other reliable sources list i will find.
-        return f"@neurology_agent.py Looking for information online...{query}"
     
     def get_relevant_research(self, query, condition=None):
-        """Get relevant neurology research for a query"""
+        """Get relevant research for a query"""
         search_query = query
         if condition:
             search_query = f"{query} {condition}"
@@ -30,27 +27,9 @@ class NeurologyAgentTools:
         
         return self.research.format_research_for_prompt(results)
 
-    def web_to_local_path(self, web_path):
-        # Only convert if web_path starts with /uploads/
-        if web_path.startswith("/uploads/"):
-            # Get the directory where uploads are stored
-            base_dir = os.path.dirname(os.path.abspath(__file__))
-            uploads_dir = os.path.join(base_dir, "..", "uploads")
-            filename = os.path.basename(web_path)
-            return os.path.abspath(os.path.join(uploads_dir, filename))
-        return web_path
-
     def get_prediction(self, image_path: str):
         url = "https://medai-api-f34085d124bb.herokuapp.com/uploadfile/"
         try:
-            # Check if file exists
-            # image_path = self.web_to_local_path(image_path)
-            if not os.path.exists(image_path):
-                self.logger.warning(f"@neurology_agent_tools.py Error getting image: File not found at {image_path}")
-                return "Image file not found"
-                
-            # Get absolute path and open file
-            image_path = os.path.abspath(image_path)
             
             # Important: Keep the file open within the same block where you use it
             with open(image_path, "rb") as file:
@@ -72,7 +51,6 @@ class NeurologyAgentTools:
     def draw_box(self, predictions, filepath):
         try:
             # Load the image
-            # filepath = self.web_to_local_path(filepath)
             image = cv2.imread(filepath)
             if image is None:
                 self.logger.error(f"@neurology_agent_tools.py Could not read image: {filepath}")
@@ -103,13 +81,14 @@ class NeurologyAgentTools:
                 # Add label
                 label = f"{class_name}: {confidence:.2f}"
                 cv2.putText(image, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, thickness)
-                
-            # Save the annotated image to the GENERATED_FOLDER
-            os.makedirs(GENERATED_FOLDER, exist_ok=True)
+
+            
+            # Save the annotated image
             file_name = f"annotated_{os.path.basename(filepath)}"
-            save_path = os.path.join(GENERATED_FOLDER, file_name)
+            save_path = os.path.join(current_app.config['GENERATED_FOLDER'], file_name)
             cv2.imwrite(save_path, image)
-            self.logger.info(f"@neurology_agent_tools.py Generated annotated image: {file_name} at {save_path}")
+            
+            self.logger.info(f"@neurology_agent_tools.py Generated image: {file_name}")
             return image, file_name
             
         except Exception as e:

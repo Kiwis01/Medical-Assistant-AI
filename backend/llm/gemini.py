@@ -9,7 +9,15 @@ class GeminiLLM:
         self.specialty_dict = config.specialty_dict
         
     def generate(self,conversation_history: list) -> str:
-        response = self.model.generate_content(contents=conversation_history)
+        response = self.model.generate_content(
+            contents=conversation_history,
+            generation_config={
+                "temperature": 1.0,
+                "max_output_tokens": 200,
+                "top_p": 0.9,
+                "top_k": 10,
+            },
+        )
         return response.text.strip()
     
     def predict_specialty(self, symptoms: str) -> str:
@@ -21,9 +29,9 @@ class GeminiLLM:
         response = self.model.generate_content(
             system_instruction,
             generation_config={
-                "temperature": 0.8,
+                "temperature": 0.5,
                 "max_output_tokens": 20,
-                "top_p": 0.8,
+                "top_p": 0.9,
                 "top_k": 10,
             },
         )

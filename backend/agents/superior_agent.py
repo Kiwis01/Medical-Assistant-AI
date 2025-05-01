@@ -8,6 +8,7 @@ class SuperiorAgent:
     def __init__(self, config):
         self.api_key = config.gemini_key
         self.logger = config.logger
+        # Add all new specialist agents here
         self.specialist_agents = {
             "Cardiology": CardiologyAgent(config),
             "Neurology": NeurologyAgent(config),
@@ -28,7 +29,7 @@ class SuperiorAgent:
                 return specialty
             else:
                 self.logger.warning(f"@superior_agent.py Could not determine a specialty")
-                return specialty
+                return None
         except (KeyError, IndexError, Exception) as e:
             self.logger.error(f"@superior_agent.py Error {str(e)}")
-            return specialty
+            return None

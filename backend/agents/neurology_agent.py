@@ -27,28 +27,26 @@ class NeurologyAgent(BaseAgent):
             text = message.get("text", "")
             extracted_path = contains_image_file(text)
             if extracted_path:
-                image_path = extracted_path
-                self.logger.info(f"@neurology_agent.py Found image in conversation: {image_path}")
+                image_path = os.path.basename(extracted_path)
+                self.logger.info(f"@neurology_agent.py Found image '{image_path}' in conversation")
 
         # if the image path is found, get prediction
         if image_path is not None:
-            image_path = self.tools.web_to_local_path(image_path)
-            if not os.path.exists(image_path):
-                self.logger.warning(f"@neurology_agent.py Image file does not exist: {image_path}")
+            image_path = f"{current_app.config['UPLOAD_FOLDER']}/{image_path}"
+            # Check if this image has already been processed
+            self.logger.info(f"@neurology_agent.py Image file exists: {image_path}")
+            if is_image_tracked(image_path):
+                # Use cached prediction
+                prediction_response = get_image_prediction(image_path)
+                self.logger.info(f"@neurology_agent.py Using cached prediction for {image_path}")
             else:
-                # Check if this image has already been processed
-                if is_image_tracked(image_path):
-                    # Use cached prediction
-                    prediction_response = get_image_prediction(image_path)
-                    self.logger.info(f"@neurology_agent.py Using cached prediction for {image_path}")
-                else:
-                    # Generate new prediction
-                    prediction_response = self.tools.get_prediction(image_path)
-                    self.logger.info(f"@neurology_agent.py {prediction_response}")
-                    self.logger.info(f"@neurology_agent.py Got prediction")
-                    
-                    # Track the prediction
-                    add_tracked_image(image_path, prediction_response, self.logger)
+                # Generate new prediction
+                prediction_response = self.tools.get_prediction(image_path)
+                self.logger.info(f"@neurology_agent.py {prediction_response}")
+                self.logger.info(f"@neurology_agent.py Got prediction")
+                
+                # Track the prediction
+                add_tracked_image(image_path, prediction_response, self.logger)
         
         # generate image with bounding boxes
         if prediction_response is not None:
@@ -60,13 +58,9 @@ class NeurologyAgent(BaseAgent):
             else:
                 # Generate new image with bounding boxes
                 image, file_name = self.tools.draw_box(prediction_response, image_path)
-                BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                GENERATED_FOLDER = os.path.join(BASE_DIR, "utils", "images", "generated")
-                generated_image_path = os.path.join(GENERATED_FOLDER, file_name)
-                self.logger.info(f"@neurology_agent.py Generated image with bounding boxes: {generated_image_path}")
                 
                 # Track the generated image
-                add_generated_image(image_path, generated_image_path, self.logger)
+                add_generated_image(image_path, file_name, self.logger)
 
                 # --- Add bot image message to conversation history ---
                 rel_generated_path = f"/generated/{file_name}"

@@ -22,6 +22,9 @@ VALID_USER_TYPES = ['patient', 'technician']
 
 # Flask image and file folder
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['GENERATED_FOLDER'] = GENERATED_FOLDER
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+os.makedirs(app.config['GENERATED_FOLDER'], exist_ok=True)
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = config.database_uri
@@ -92,14 +95,9 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
     file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         # Return the relative path to the frontend
@@ -112,7 +110,7 @@ def uploaded_file(filename):
 
 @app.route('/generated/<filename>')
 def generated_file(filename):
-    return send_from_directory(GENERATED_FOLDER, filename)
+    return send_from_directory(app.config['GENERATED_FOLDER'], filename)
 
 @app.route('/health', methods=['GET'])
 def health():
@@ -142,7 +140,7 @@ def chat():
                 conversation_history.append({"role": "model", "agent": specialty, "text": response})
                 result = {"response": response, "history": conversation_history, "specialty": specialty}
         else:
-            config.logger.warning(f"@app.py No specialist agent found, {specialty}")
+            config.logger.warning("@app.py No specialist agent found")
             conversation_history.append({"role": "model", "agent": None, "text": specialty})
             result = {"response": specialty, "history": conversation_history, "specialty": specialty}
     else:

@@ -25,3 +25,5 @@ from utils.common_utils import *
 
 # Database
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from flask import current_app

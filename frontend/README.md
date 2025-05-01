@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+# Medical Assistant AI - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+The frontend of the Medical Assistant AI is a React-based web application built with TypeScript. It provides an intuitive interface for users to interact with the AI medical assistant, upload medical images, and receive specialized medical insights.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Chat Interface**: Communicate with specialized medical agents
+- **Image Upload**: Submit medical images for AI analysis
+- **Authentication System**: Secure login and registration
+- **Responsive Design**: Works on desktop and mobile devices
+- **Real-time Feedback**: Immediate responses from the AI system
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Framework**: React 19 with TypeScript
+- **Routing**: React Router v7
+- **UI Components**: Custom components with React Icons
+- **Markdown Rendering**: React Markdown for formatted responses
+- **Authentication**: Custom auth service with JWT
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+```
+frontend/
+├── public/              # Static files
+├── src/                 # Source code
+│   ├── pages/           # Application pages
+│   │   ├── Chatbot/     # Chat interface components
+│   │   └── Login/       # Authentication components
+│   ├── services/        # API and auth services
+│   ├── App.tsx          # Main application component
+│   └── index.tsx        # Application entry point
+├── package.json         # Dependencies and scripts
+└── tsconfig.json        # TypeScript configuration
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Development
 
-### `npm run build`
+### Prerequisites
+- Node.js 16+ and npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Available Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### `npm start`
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### `npm test`
+Launches the test runner in interactive watch mode.
 
-### `npm run eject`
+#### `npm run build`
+Builds the app for production to the `build` folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Connecting to Backend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The frontend communicates with the backend through API endpoints. The main interaction points are:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Authentication**: Login and registration
+- **Chat**: Sending queries and receiving responses
+- **Image Upload**: Submitting medical images for analysis
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+All API calls are configured to connect to the backend running at `http://localhost:5000` by default.
 
-## Learn More
+## UI Components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Chat Interface
+The chat interface allows users to:
+- Send text queries to the medical assistant
+- Upload medical images for analysis
+- View AI-generated responses with proper formatting
+- See annotated medical images with diagnostic overlays
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Authentication
+The authentication system provides:
+- User registration with role selection (patient/technician)
+- Secure login with JWT token storage
+- Protected routes for authenticated users
+
+## Extending the Frontend
+
+### Adding New Pages
+1. Create a new directory in `src/pages/`
+2. Implement your React components
+3. Add the route in `App.tsx`
+
+### Styling Guidelines
+The application uses a consistent styling approach with:
+- Responsive design principles
+- Accessible UI elements
+- Consistent color scheme for medical context

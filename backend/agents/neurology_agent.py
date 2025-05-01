@@ -100,7 +100,7 @@ class NeurologyAgent(BaseAgent):
         prompt = (
             f"You are a neurology specialist. "
             f"Instructions:\n{instructions_text}\n\n"
-            f"{research_context}\n\n"
+            f"Research Context:\n{research_context}\n\n"
             f"Tumor prediction response if available: {prediction_response}\n\n"
             f"Patient symptoms: {query}\n"
             f"Based on the above, provide your medical reasoning and recommendation."

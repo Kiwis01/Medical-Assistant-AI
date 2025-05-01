@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import './ChatbotStyles.css'; // Import the override styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,10 +7,35 @@ import { faUserDoctor, faUser, faImage } from '@fortawesome/free-solid-svg-icons
 import ReactMarkdown from 'react-markdown';
 import { API_BASE_URL } from '../../constants';
 
+// Loading dots animation component
+const LoadingDots = ({ label = '' }) => {
+  const [dots, setDots] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(prev => prev < 3 ? prev + 1 : 1);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="loading-container">
+      {label && <span className="loading-label">{label}</span>}
+      <div className="loading-dots">
+        <div className={`dot ${dots >= 1 ? 'active' : ''}`}></div>
+        <div className={`dot ${dots >= 2 ? 'active' : ''}`}></div>
+        <div className={`dot ${dots >= 3 ? 'active' : ''}`}></div>
+      </div>
+    </div>
+  );
+};
+
 interface Message {
   text?: string;
   sender: 'user' | 'bot';
   imageUrl?: string;
+  isLoading?: boolean;
+  loadingLabel?: string;
 }
 
 function App() {
@@ -25,30 +50,47 @@ function App() {
     // Handle image upload and message
     if (imagePreview && imageFile) {
       try {
-        // Upload image to backend
-        const serverPath = await uploadImageToBackend(imageFile);
-        // Add user message with preview to UI
-        const userMessage: Message = { sender: 'user', imageUrl: imagePreview, text: serverPath };
-        // Use a local updatedMessages array to keep the preview
-        const updatedMessages = [...messages, userMessage];
-        setMessages(updatedMessages);
+        // First, add user message with preview to UI immediately
+        const userMessage: Message = { sender: 'user', imageUrl: imagePreview, text: 'Uploading image...' };
+        setMessages(prevMessages => [...prevMessages, userMessage]);
+        
+        // Clear input state
         setImagePreview(null);
         setImageFile(null);
         if (fileInputRef.current) fileInputRef.current.value = '';
-
+        
+        // Then upload image to backend (this might take time)
+        const serverPath = await uploadImageToBackend(imageFile);
+        
+        // Update the user message with the actual server path
+        setMessages(prevMessages => {
+          const updatedMessages = [...prevMessages];
+          const lastIndex = updatedMessages.length - 1;
+          if (lastIndex >= 0 && updatedMessages[lastIndex].sender === 'user') {
+            updatedMessages[lastIndex] = { ...updatedMessages[lastIndex], text: serverPath };
+          }
+          return updatedMessages;
+        });
+        
         // Prepare backend history (only text messages)
-        const backendHistory = updatedMessages
+        const backendHistory = messages
           .filter((msg) => typeof msg.text === "string" && msg.text)
           .map((msg) => ({
             role: msg.sender === "user" ? "user" : "model",
             text: msg.text as string,
           }));
-
+        
+        // Add a loading message with animation
+        setMessages(prevMessages => [...prevMessages, { sender: 'bot', isLoading: true, loadingLabel: 'Analyzing image' }]);
+        
         // Send to backend
         const data = await sendMessageToBackend(serverPath, backendHistory, "12345");
-        // Convert backend history to frontend Message[]
+        
+        // Replace the loading message with actual response
         setMessages(prevMsgs => {
-          return data.history.map((msg: any) => {
+          
+          // Map the response history to our message format
+          const responseMessages = data.history.map((msg: any) => {
             if (msg.role === "user") {
               // Find a local user message with a matching text and imageUrl
               const local = prevMsgs.find(
@@ -68,15 +110,30 @@ function App() {
             }
             return { text: msg.text, sender: msg.role === "user" ? "user" : "bot" };
           });
+          
+          return responseMessages;
         });
       } catch (err) {
         console.error(err);
+        // Show error message
+        setMessages(prevMessages => [...prevMessages.slice(0, -1), { sender: 'bot', text: 'Error processing image. Please try again.' }]);
       }
       return;
     }
 
     // Send text message
     if (inputText.trim() !== "") {
+      const userInputCopy = inputText.trim();
+      
+      // Immediately add user message to UI
+      setMessages(prevMessages => [...prevMessages, { sender: 'user', text: userInputCopy }]);
+      
+      // Clear input field right away
+      setInputText('');
+      
+      // Add a loading message with animation
+      setMessages(prevMessages => [...prevMessages, { sender: 'bot', isLoading: true, loadingLabel: 'Thinking' }]);
+      
       // Prepare backend history format (only text messages)
       const backendHistory = messages
         .filter((msg) => typeof msg.text === "string" && msg.text)
@@ -86,10 +143,12 @@ function App() {
         }));
 
       try {
-        const data = await sendMessageToBackend(inputText, backendHistory, "12345");
-        // Convert backend history to frontend Message[]
+        const data = await sendMessageToBackend(userInputCopy, backendHistory, "12345");
+        
+        // Replace the loading message with actual response
         setMessages(prevMsgs => {
-          return data.history.map((msg: any) => {
+          // Map the response history to our message format
+          const responseMessages = data.history.map((msg: any) => {
             if (msg.role === "user") {
               const local = prevMsgs.find(
                 m => m.sender === "user" && m.text === msg.text && m.imageUrl
@@ -100,11 +159,14 @@ function App() {
             }
             return { text: msg.text, sender: msg.role === "user" ? "user" : "bot" };
           });
+          
+          return responseMessages;
         });
       } catch (err) {
         console.error(err);
+        // Show error message instead of loading
+        setMessages(prevMessages => [...prevMessages.slice(0, -1), { sender: 'bot', text: 'Sorry, I encountered an error. Please try again.' }]);
       }
-      setInputText("");
     }
   };
 
@@ -159,6 +221,9 @@ function App() {
                   setZoomedImage(url);
                 }}
               />
+            ) : message.isLoading ? (
+              <LoadingDots label={message.loadingLabel} />
+
             ) : (
               message.sender === 'bot' ? (
                 <span className="message-text">

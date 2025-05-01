@@ -1677,3 +1677,111 @@
 2025-05-01 04:29:49,503 - INFO - @general_med_agent.py Handling query
 2025-05-01 04:30:04,042 - INFO - @superior_agent.py Determined specialty: General Medicine
 2025-05-01 04:30:04,042 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:35:31,897 - INFO - @config.py initialized successfully
+2025-05-01 04:35:37,176 - INFO - @config.py initialized successfully
+2025-05-01 04:36:22,593 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:36:22,619 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:36:29,837 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:36:29,837 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:36:36,288 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:36:36,288 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:36:41,014 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-05-01 04:36:41,015 - INFO - @neurology_agent.py Handling query
+2025-05-01 04:36:41,015 - INFO - @neurology_agent.py Found image 'tm.jpg' in conversation
+2025-05-01 04:36:41,016 - INFO - @neurology_agent.py Image file exists: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:36:42,985 - INFO - @neurology_agent.py [{'x': 624.0, 'y': 353.0, 'width': 142.0, 'height': 162.0, 'confidence': 0.9427260756492615, 'class': 'meningioma', 'class_id': 2, 'detection_id': '9f712260-b58e-4e5c-b580-8973ee379c03'}]
+2025-05-01 04:36:42,985 - INFO - @neurology_agent.py Got prediction
+2025-05-01 04:36:42,985 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:36:43,130 - INFO - @neurology_agent_tools.py Generated image: annotated_tm.jpg
+2025-05-01 04:36:43,130 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg -> annotated_tm.jpg
+2025-05-01 04:36:43,130 - INFO - @research_tools.py Searching for: neurology brain tumor meningioma brain
+2025-05-01 04:36:43,131 - INFO - @research_tools.py Searching PubMed for: neurology brain tumor meningioma brain
+2025-05-01 04:36:43,131 - INFO - Simplified PubMed search term: brain tumor meningioma
+2025-05-01 04:36:45,213 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:37:23,830 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:37:23,830 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:37:37,322 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:37:37,322 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:41:58,109 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:41:58,109 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:42:19,056 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:42:19,056 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:42:24,506 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:42:24,507 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:42:41,842 - INFO - @config.py initialized successfully
+2025-05-01 04:43:23,836 - INFO - @config.py initialized successfully
+2025-05-01 04:43:26,028 - INFO - @config.py initialized successfully
+2025-05-01 04:43:37,627 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:43:37,628 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:43:46,532 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:43:46,532 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:44:03,055 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:44:03,055 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:44:12,943 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-05-01 04:44:12,943 - INFO - @neurology_agent.py Handling query
+2025-05-01 04:44:12,943 - INFO - @neurology_agent.py Found image 'tm.jpg' in conversation
+2025-05-01 04:44:12,944 - INFO - @neurology_agent.py Image file exists: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:44:15,616 - INFO - @neurology_agent.py [{'x': 624.0, 'y': 353.0, 'width': 142.0, 'height': 162.0, 'confidence': 0.9427260756492615, 'class': 'meningioma', 'class_id': 2, 'detection_id': 'a99774c1-4558-4e02-8bed-ca21fc536598'}]
+2025-05-01 04:44:15,617 - INFO - @neurology_agent.py Got prediction
+2025-05-01 04:44:15,617 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:44:15,640 - INFO - @neurology_agent_tools.py Generated image: annotated_tm.jpg
+2025-05-01 04:44:15,640 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg -> annotated_tm.jpg
+2025-05-01 04:44:15,641 - INFO - @research_tools.py Searching for: neurology brain mri meningioma brain
+2025-05-01 04:44:15,641 - INFO - @research_tools.py Searching PubMed for: neurology brain mri meningioma brain
+2025-05-01 04:44:15,641 - INFO - Simplified PubMed search term: brain meningioma
+2025-05-01 04:44:18,203 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:47:23,542 - INFO - @config.py initialized successfully
+2025-05-01 04:47:41,531 - INFO - @config.py initialized successfully
+2025-05-01 04:47:43,638 - INFO - @config.py initialized successfully
+2025-05-01 04:48:04,336 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:48:04,337 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:48:14,751 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:48:14,751 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:48:27,086 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:48:27,087 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:48:41,714 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-05-01 04:48:41,714 - INFO - @neurology_agent.py Handling query
+2025-05-01 04:48:41,715 - INFO - @neurology_agent.py Found image 'meng.jpg' in conversation
+2025-05-01 04:48:41,715 - INFO - @neurology_agent.py Image file exists: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/meng.jpg
+2025-05-01 04:48:43,318 - INFO - @neurology_agent.py [{'x': 570.0, 'y': 1140.0, 'width': 240.0, 'height': 240.0, 'confidence': 0.9352712035179138, 'class': 'meningioma', 'class_id': 2, 'detection_id': '9c02cdd8-5f7f-4ac7-ad5c-0da4732e7700'}]
+2025-05-01 04:48:43,318 - INFO - @neurology_agent.py Got prediction
+2025-05-01 04:48:43,318 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/meng.jpg
+2025-05-01 04:48:43,424 - INFO - @neurology_agent_tools.py Generated image: annotated_meng.jpg
+2025-05-01 04:48:43,425 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/meng.jpg -> annotated_meng.jpg
+2025-05-01 04:48:43,425 - INFO - @research_tools.py Searching for: neurology brain mri meningioma brain
+2025-05-01 04:48:43,425 - INFO - @research_tools.py Searching PubMed for: neurology brain mri meningioma brain
+2025-05-01 04:48:43,425 - INFO - Simplified PubMed search term: brain meningioma
+2025-05-01 04:48:45,606 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:51:25,438 - INFO - @config.py initialized successfully
+2025-05-01 04:56:22,471 - INFO - @config.py initialized successfully
+2025-05-01 04:57:01,434 - INFO - @config.py initialized successfully
+2025-05-01 04:57:15,519 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:57:15,519 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:57:25,666 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:57:25,667 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:57:38,890 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:57:38,890 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:58:02,807 - INFO - @config.py initialized successfully
+2025-05-01 04:58:15,630 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:58:15,630 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:58:21,359 - INFO - @superior_agent.py Determined specialty: General Medicine
+2025-05-01 04:58:21,359 - INFO - @general_med_agent.py Handling query
+2025-05-01 04:58:27,508 - WARNING - @superior_agent.py Could not determine a specialty
+2025-05-01 04:58:27,509 - WARNING - @app.py Could not determine specialty.
+2025-05-01 04:58:34,526 - INFO - @superior_agent.py Determined specialty: Neurology
+2025-05-01 04:58:34,527 - INFO - @neurology_agent.py Handling query
+2025-05-01 04:58:34,528 - INFO - @neurology_agent.py Found image 'tm.jpg' in conversation
+2025-05-01 04:58:34,528 - INFO - @neurology_agent.py Image file exists: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:58:36,498 - INFO - @neurology_agent.py [{'x': 624.0, 'y': 353.0, 'width': 142.0, 'height': 162.0, 'confidence': 0.9427260756492615, 'class': 'meningioma', 'class_id': 2, 'detection_id': '38d94e16-f1a9-4fe9-ae3d-7a919593fe0f'}]
+2025-05-01 04:58:36,498 - INFO - @neurology_agent.py Got prediction
+2025-05-01 04:58:36,498 - INFO - @common_utils.py Added image to tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg
+2025-05-01 04:58:36,521 - INFO - @neurology_agent_tools.py Generated image: annotated_tm.jpg
+2025-05-01 04:58:36,521 - INFO - @common_utils.py Added generated image tracking: /home/kiwis/Desktop/med/Medical-Assistant-AI/backend/utils/images/uploads/tm.jpg -> annotated_tm.jpg
+2025-05-01 04:58:36,521 - INFO - @research_tools.py Searching for: neurology brain mri meningioma brain
+2025-05-01 04:58:36,522 - INFO - @research_tools.py Searching PubMed for: neurology brain mri meningioma brain
+2025-05-01 04:58:36,522 - INFO - Simplified PubMed search term: brain meningioma
+2025-05-01 04:58:38,712 - INFO - @neurology_agent.py Generated response
+2025-05-01 04:58:57,805 - INFO - @superior_agent.py Determined specialty: Cardiology
+2025-05-01 04:58:57,806 - INFO - @cardiology_agent.py Handling query: [{'role': 'user', 'text': 'hello'}, {'role': 'model', 'agent': 'General Medicine', 'text': "Hello! Since you've just said hello, I'll assume you're not seeking medical advice right now. If you have any symptoms or health concerns, feel free to describe them, and I'll do my best to guide you."}, {'role': 'user', 'text': 'i have a headache'}, {'role': 'model', 'agent': 'General Medicine', 'text': 'Okay, a headache can have many causes. Try resting in a quiet, dark room. Stay hydrated and maybe take an over-the-counter pain reliever like ibuprofen or acetaminophen.\n\nIf the headache is severe, persists for days, or is accompanied by fever, stiff neck, vision changes, or neurological symptoms, please see a doctor promptly to rule out anything serious.'}, {'role': 'user', 'text': '/uploads/tm.jpg'}, {'role': 'model', 'agent': None, 'text': 'Could not determine specialty. Please provide more details. (e.g. symptoms, mri, xray, etc)'}, {'role': 'user', 'text': 'brain mri'}, {'role': 'model', 'text': '/generated/annotated_tm.jpg'}, {'role': 'model', 'agent': 'Neurology', 'text': "Okay, I've reviewed the brain MRI you provided. There's a high probability of a meningioma present. Given your headache and the image findings, this is a likely diagnosis.\n\nHere's what I recommend:\n\n*   **Confirmation:** A biopsy may be needed to confirm the diagnosis definitively.\n*   **Treatment Options:** Depending on the size and location, treatment could include:\n    *   **Observation:** If small and not causing significant symptoms.\n    *   **Surgery:** (See Source 1 & 3) For larger, symptomatic tumors.\n    *   **Radiation Therapy:** As an alternative or adjunct to surgery.\n*   **Medication:** (See Source 2) Certain medications may affect meningioma risk.\n\nPlease schedule an appointment for a full neurological evaluation and to discuss these findings and treatment options."}, {'role': 'user', 'text': 'my chest hurts too'}]
+2025-05-01 04:59:22,951 - INFO - @config.py initialized successfully
+2025-05-01 04:59:52,307 - INFO - @config.py initialized successfully

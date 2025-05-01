@@ -4,7 +4,7 @@ from agents.base_agent import BaseAgent
 class CardiologyAgent(BaseAgent):
     def handle_query(self, query):
         # Use GeminiLLM or other logic
-        self.logger.info(f"@cardiology_agent.py Handling query: {query}")
+        self.logger.info(f"@cardiology_agent.py Handling query")
         
         # Get instructions from config
         instructions = self.config.cardiology_instructions

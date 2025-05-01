@@ -145,8 +145,8 @@ def chat():
             result = {"response": specialty, "history": conversation_history, "specialty": specialty}
     else:
         config.logger.warning("@app.py Could not determine specialty.")
-        conversation_history.append({"role": "model", "agent": None, "text": "Could not determine specialty."})
-        result = {"response": "Could not determine specialty.", "history": conversation_history, "specialty": None}
+        conversation_history.append({"role": "model", "agent": None, "text": "Could not determine specialty. Please provide more details. (e.g. symptoms, mri, xray, etc)"})
+        result = {"response": "Please provide more details (e.g., brain MRI, chest X-ray, ultrasound).", "history": conversation_history, "specialty": None}
 
     return jsonify(result)
 
